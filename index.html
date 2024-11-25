@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Workers와 OpenAI GPT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+        #response {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>얼룩 제거 전문가 GPT</h1>
+    <p>질문을 입력하세요. 예: "커피 얼룩 제거 방법" 또는 "와인 얼룩 처리법"</p>
+    <input type="text" id="question" placeholder="질문을 입력하세요" style="width: 400px;">
+    <button onclick="askGPT()">질문하기</button>
+    <div id="response">답변이 여기에 표시됩니다.</div>
+
+    <script>
+        async function askGPT() {
+            const question = document.getElementById('question').value.trim();
+            const responseElement = document.getElementById('response');
+
+            if (!question) {
+                responseElement.textContent = "질문을 입력해주세요.";
+                return;
+            }
+
+            responseElement.textContent = "GPT가 답변을 작성 중입니다...";
+
+            try {
+                const response = await fetch("cherryclean.pages.dev", { // Workers 배포 URL 입력
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ question }),
+                });
+
+                if (!response.ok) {
+                    throw new Error(`서버 오류: ${response.status}`);
+                }
+
+                const { answer } = await response.json();
+                responseElement.textContent = answer;
+            } catch (error) {
+                console.error("에러 발생:", error);
+                responseElement.textContent = "답변을 가져오는 중 문제가 발생했습니다.";
+            }
+        }
+    </script>
+</body>
+</html>
