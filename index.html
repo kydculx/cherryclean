@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cloudflare Workers와 OpenAI GPT</title>
+    <title>얼룩 제거 전문가 GPT</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,7 +39,8 @@
             responseElement.textContent = "GPT가 답변을 작성 중입니다...";
 
             try {
-                const response = await fetch("cherryclean.pages.dev", { // Workers 배포 URL 입력
+                // Cloudflare Workers URL로 요청
+                const response = await fetch("https://lotto.kydculx.workers.dev", { // Worker 배포 URL
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
