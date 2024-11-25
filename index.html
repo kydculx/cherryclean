@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>매트리스 얼룩 제거 전문가</title>
+    <title>개인 GPT 지침서</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,14 +20,14 @@
     </style>
 </head>
 <body>
-    <h1>매트리스 얼룩 제거 전문가</h1>
+    <h1>개인 GPT 지침서</h1>
     <p>질문을 입력하세요. 예: "커피 얼룩 제거 방법" 또는 "혈액 얼룩 처리법"</p>
     <input type="text" id="question" placeholder="질문을 입력하세요" style="width: 400px;">
-    <button onclick="askGPT()">질문하기</button>
+    <button onclick="askGuide()">질문하기</button>
     <div id="response">답변이 여기에 표시됩니다.</div>
 
     <script>
-        async function askGPT() {
+        async function askGuide() {
             const question = document.getElementById('question').value.trim();
             const responseElement = document.getElementById('response');
 
@@ -39,7 +39,7 @@
             responseElement.textContent = "정보를 가져오는 중입니다...";
 
             try {
-                const response = await fetch("https://lotto.kydculx.workers.dev", { // Cloudflare Worker URL
+                const response = await fetch("https://lotto.kydculx.workers.dev/", { // Worker URL
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
