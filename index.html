@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>얼룩 제거 전문가 GPT</title>
+    <title>매트리스 얼룩 제거 전문가</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -20,8 +20,8 @@
     </style>
 </head>
 <body>
-    <h1>얼룩 제거 전문가 GPT</h1>
-    <p>질문을 입력하세요. 예: "커피 얼룩 제거 방법" 또는 "와인 얼룩 처리법"</p>
+    <h1>매트리스 얼룩 제거 전문가</h1>
+    <p>질문을 입력하세요. 예: "커피 얼룩 제거 방법" 또는 "혈액 얼룩 처리법"</p>
     <input type="text" id="question" placeholder="질문을 입력하세요" style="width: 400px;">
     <button onclick="askGPT()">질문하기</button>
     <div id="response">답변이 여기에 표시됩니다.</div>
@@ -36,11 +36,10 @@
                 return;
             }
 
-            responseElement.textContent = "GPT가 답변을 작성 중입니다...";
+            responseElement.textContent = "정보를 가져오는 중입니다...";
 
             try {
-                // Cloudflare Workers URL로 요청
-                const response = await fetch("https://cherryclean.pages.dev", { // Worker 배포 URL
+                const response = await fetch("https://lotto.kydculx.workers.dev", { // Cloudflare Worker URL
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -56,7 +55,7 @@
                 responseElement.textContent = answer;
             } catch (error) {
                 console.error("에러 발생:", error);
-                responseElement.textContent = "답변을 가져오는 중 문제가 발생했습니다.";
+                responseElement.textContent = "정보를 가져오는 중 문제가 발생했습니다.";
             }
         }
     </script>
